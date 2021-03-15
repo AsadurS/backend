@@ -26,7 +26,6 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        dd($request->all());
         $credentials = $request->only('email', 'password');
 
         if ($token = $this->guard()->attempt($credentials)) {
@@ -79,7 +78,8 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type'   => 'bearer',
-            'expires_in'   => $this->guard()->factory()->getTTL() * 60
+            'expires_in'   => $this->guard()->factory()->getTTL() * 60,
+            'success'=> true
         ]);
     }
 

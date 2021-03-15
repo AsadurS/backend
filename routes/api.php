@@ -30,5 +30,6 @@ Route::group([
 });
 
 Route::get('/get', function(){
+
    return response()->json(['data'=>123]);
 });
