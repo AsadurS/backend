@@ -26,6 +26,7 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+        dd($request->all());
         $credentials = $request->only('email', 'password');
 
         if ($token = $this->guard()->attempt($credentials)) {
