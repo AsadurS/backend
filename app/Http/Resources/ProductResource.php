@@ -16,10 +16,12 @@ class ProductResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'title' => Str::limit($this->title, 20),
+            'uuid' => $this->uuid,
+            'title' => Str::limit($this->title, 30),
+            'description' => Str::limit($this->description, 30),
             'price' => number_format($this->price,2),
             'deleteLink' => route('product.delete',$this->uuid),
-            'editLink' => route('product.update',$this->uuid),
+            'updateLink' => route('product.update',$this->uuid),
             'image' =>asset('storage/image/product/' .$this->image),
         ];
     }
